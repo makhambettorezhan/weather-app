@@ -25,6 +25,9 @@ const asyncAdd = (a, b) => {
 
 asyncAdd(3, 4).then((result) => {
     console.log('Result:', result);
-}, (errorMessage) => {
-    console.log('Error:', errorMessage);
+    return asyncAdd(result, '13');
+}).then(result => {
+    console.log('Should be 20', result)
+}).catch(errorMessage => {
+    console.log(errorMessage);
 });
