@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const geocode = require('./geocode/geocode');
 const weather = require('./weather/weather');
 
+var port = process.env.PORT || 3000;
+
 var app = express();
 app.set('view engine', 'hbs');
 
@@ -49,6 +51,6 @@ hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('getCurrentYear', () => {
     return new Date().getFullYear();
 });
-app.listen(3000, () => {
-    console.log('Server is up for port 3000');
+app.listen(port, () => {
+    console.log('Server is up for port ' + port);
 });
