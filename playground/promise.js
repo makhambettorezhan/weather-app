@@ -1,4 +1,5 @@
-/*let somePromise = new Promise((resolve, reject) => {
+/*
+let somePromise = new Promise((resolve, reject) => {
     setTimeout(() => {
    //     resolve('It is working');
         reject('Unable to fullfil promise');
@@ -10,7 +11,7 @@ somePromise.then((message) => {
 }, errorMessage => {
     console.log('Error:', errorMessage);
 });
-*/
+
 const asyncAdd = (a, b) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -31,3 +32,19 @@ asyncAdd(3, 4).then((result) => {
 }).catch(errorMessage => {
     console.log(errorMessage);
 });
+*/
+const isNumber = (number) => {
+	return new Promise((resolve, reject) => {
+		if( typeof number === 'number' ) 
+			resolve('Yes, it is a number.');
+		else
+			reject('No, it is not a number!');
+	});
+};
+
+isNumber('4').then(result => {
+	console.log('Result:', result);
+}, errorMessage => {
+	console.log(errorMessage);
+});
+

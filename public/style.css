@@ -1,0 +1,24 @@
+body {
+    color: #fff;
+    background: black;
+    padding: 1rem;
+    text-align: center;
+}
+
+.container {
+    width: 50%;
+    margin: 0 auto;
+    border: 2px solid #5cdb95;
+    padding: 2rem;
+}
+
+.address-area {
+    height: 2rem;
+    border: none;
+}
+
+.btn {
+    height: 2rem;
+    background: #5cdb95;
+    border: 1px     
+}

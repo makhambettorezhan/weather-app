@@ -9,7 +9,7 @@ const apiWeatherKey = 'd2ef74fe70755e3ed04791794c38fff0';
 const argv = yargs
   .options({
     address: {
-      demand: true,
+     // demand: true,
       alias: 'a',
       describe: 'Fetching the address',
       string: true
@@ -19,9 +19,10 @@ const argv = yargs
   .alias('help', 'h')
   .argv;
 
+if(!argv.address) argv.address = 'Aktobe'; //setting default location
+
 let encodedAddress = encodeURIComponent(argv.address);
 let geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?key=${apiGeoKey}&address=${encodedAddress}`;
-
 
 
 axios.get(geocodeUrl).then(response => {
@@ -37,8 +38,9 @@ axios.get(geocodeUrl).then(response => {
 }).then(response => {
     let temperature = response.data.currently.temperature;
     let apparentTemperature = response.data.currently.apparentTemperature;
+    let icon = response.data.currently.icon;
 
-    console.log(`It's currently ${temperature}C. It feels like ${apparentTemperature}C.`);
+    console.log(`It's currently ${temperature}F. It feels like ${apparentTemperature}F. And it's ${icon}.`);
 }).catch(error => {
     if(error.code === 'ENOTFOUND') {
         console.log('Unable to connect to API servers');
