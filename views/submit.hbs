@@ -6,11 +6,21 @@
     </head>
     <body>
         <div class="container">
-            <h1>{{address}}</h1>
+            <h3>{{address}}</h3>
 
-            <p>It's currently {{temperature}}C</p>
-            <p>But it feels like {{actualTemperature}}C</p>
+            <h1>{{temperature}}°C</h1>
+            <h3>{{summary}}</h3>
+
+            <span class="additional-info">But it feels like {{actualTemperature}}°C</span>
+            <span class="additional-info">Humidity: {{humidity}}%</span>
+            <span class="additional-info">Pressure: {{pressure}} mb</span>
+            <span class="additional-info">Visibility: {{visibility}} miles</span>
+            
+            <p style="padding-top: 1rem;"><a href="/" class="btn-goback">Go Back!</a></p>
+            
+
             <div class="block" style="height: 3rem;"></div>
+
             {{> footer}}
         </div>
     </body>

@@ -23,21 +23,36 @@ app.post('/submit', (req, res) => {
     let address = req.body.address;
     let temperature;
     let actualTemperature;
+    let summary;
+    let humidity;
+    let pressure;
+    let visibility;
+
     geocode.geocodeAddress(address, (errorMessage, results) => {
         if(errorMessage) {
           console.log(errorMessage);
         } else {
-      
+          address = JSON.stringify(results.address);
+
           weather.getWeather(results.latitude, results.longitude, (errorMessage, weatherResults) => {
             if(errorMessage) {
               console.log(errorMessage);
             } else {
                 temperature = weatherResults.temperature;
                 actualTemperature = weatherResults.apparentTemperature;
+                summary = weatherResults.summary;
+                humidity = weatherResults.humidity;
+                pressure = weatherResults.pressure;
+                visibility = weatherResults.visibility;
+
                 res.render('submit.hbs', {
                     address,
                     temperature,
-                    actualTemperature
+                    actualTemperature,
+                    summary,
+                    humidity,
+                    pressure,
+                    visibility
                 });
             }
           });    

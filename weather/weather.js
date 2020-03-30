@@ -9,7 +9,11 @@ const getWeather = (lat, lng, callback) => {
         if(!error && response.statusCode === 200) {
             callback(undefined, {
                 temperature: convertF2C(body.currently.temperature),
-                apparentTemperature: convertF2C(body.currently.apparentTemperature)
+                apparentTemperature: convertF2C(body.currently.apparentTemperature),
+                summary: body.currently.summary,
+                humidity: body.currently.humidity * 100,
+                pressure: body.currently.pressure,
+                visibility: body.currently.visibility
             });
         } else if(response.statusCode === 400) {
             callback('Unable to fetch weather.');
